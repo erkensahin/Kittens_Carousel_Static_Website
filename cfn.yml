@@ -7,20 +7,20 @@ Resources:
   MyWebServer:
     Type: AWS::EC2::Instance
     Properties:
-      ImageId: ami-01c647eace872fc02
+      ImageId: ami-03a6eaae9938c858c
       InstanceType: t2.micro
-      KeyName: ottoaws9
+      KeyName: firstkey
       SecurityGroupIds: 
         - !Ref MySecGrp
       Tags: 
         - Key: Name
-          Value: !Sub Osvaldo ${AWS::StackName}
+          Value: !Sub Sahin ${AWS::StackName}
       UserData:
         Fn::Base64: |
             #! /bin/bash
             yum update -y
             yum install httpd -y
-            FOLDER="https://raw.githubusercontent.com/awsdevopsteam/101-kittens-carousel-static-website/master/static-web"
+            FOLDER="https://raw.githubusercontent.com/erkensahin/Kittens_Carousel_Static_Website/main/static-web"
             cd /var/www/html
             wget ${FOLDER}/index.html
             wget ${FOLDER}/cat0.jpg
@@ -34,7 +34,7 @@ Resources:
     Type: AWS::EC2::SecurityGroup
     Properties:
       GroupDescription: ssh and http # Required
-      GroupName: osvaldosecportfolio
+      GroupName: Sahinsecportfolio
       SecurityGroupIngress:
         - IpProtocol: tcp
           FromPort: 22
